@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Night Field Test", "location": "Haifa", "type": "Navigation", "status": "Planned", "date": "2026-11-15T00:00:00" },
+  { "id": 2, "name": "Radar Calibration", "location": "Tel Aviv", "type": "Radar", "status": "Completed", "date": "2026-10-01T00:00:00" },
+  { "id": 3, "name": "Drone Range", "location": "Haifa", "type": "Drone", "status": "InProgress", "date": "2026-11-13T00:00:00" },
+  { "id": 4, "name": "Antenna Check", "location": "Eilat", "type": "Radar", "status": "Planned", "date": "2026-12-01T00:00:00" },
+  { "id": 5, "name": "Compass Drift", "location": "Tel Aviv", "type": "Navigation", "status": "Completed", "date": "2026-09-15T00:00:00" },
+  { "id": 6, "name": "Sensor Alignment", "location": "Haifa", "type": "Radar", "status": "Planned", "date": "2026-11-05T00:00:00" }
+]
