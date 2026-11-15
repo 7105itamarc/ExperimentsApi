@@ -1,8 +1,14 @@
+using ExperimentsApi.Repositories;
+using ExperimentsApi.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
+
+// Add services to the container.
+builder.Services.AddScoped<IExperimentRepository,JsonExperimentRepository>();
+builder.Services.AddScoped<IExperimentService,ExperimentService>();
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 

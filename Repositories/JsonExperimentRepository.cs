@@ -31,9 +31,11 @@ public class JsonExperimentRepository : IExperimentRepository
         List<Experiment> experiments = await GetAllAsync();
         return experiments.FirstOrDefault(ex => ex.Id == id);
     }
-
-    // להשלים את השלישי באנטרפייס
-
-
+    
+    public async Task SaveAllAsync(List<Experiment> experiments)
+    {
+        string json = JsonSerializer.Serialize(experiments, _options);
+        await File.WriteAllTextAsync(_filePath,json);
+    }
 
 }
