@@ -37,4 +37,29 @@ public class ExperimentService : IExperimentService
             Status = experiment.Status.ToString()
         };
     }
+    public async Task<ExperimentSummaryDto> CreateAsync(CreateExperimentDto dto)
+    {
+        bool statusOk = Enum.TryParse(dto.Status, true, out ExperimentStatus status);
+
+        if (dto.Date is null) { throw new ArgumentException("Date is Required"); }
+        if (!statusOk || !Enum.IsDefined(status)) { throw new ArgumentException("Invalid status"); }
+
+        List<Experiment> experiments = await _repository.GetAllAsync();
+        int newId = experiments.Count == 0 ? 1 : experiments.Max(ex => ex.Id) + 1;
+
+        
+        Experiment newExperiment = new Experiment
+        {
+            Id = newId,
+            Name = dto.Name,
+            Location = dto.Location,
+            Type = dto.Type,
+            Date = dto.Date.Value,
+            Status = status
+        };
+        experiments.Add(newExperiment);
+        await _repository.SaveAllAsync(experiments);
+
+        return ToSummaryDto(newExperiment);
+    }
 }

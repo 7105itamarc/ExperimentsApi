@@ -28,4 +28,19 @@ public class ExperimentsController : ControllerBase
         if (experiment is null) { return NotFound(); }
         return Ok(experiment);
     }
+
+    [HttpPost]
+    public async Task<ActionResult<ExperimentSummaryDto>> Create(CreateExperimentDto dto)
+    {
+        try
+        {
+            ExperimentSummaryDto createdDtoSummary = await _experimentService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = createdDtoSummary.Id }, createdDtoSummary);
+            // shortcut for Response.Headers.Location = $"/api/experiments/{created.Id}"; return StatusCode(201, createdDtoSummary);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 }

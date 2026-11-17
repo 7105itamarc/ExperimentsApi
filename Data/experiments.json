@@ -1,8 +1,66 @@
 [
-  { "id": 1, "name": "Night Field Test", "location": "Haifa", "type": "Navigation", "status": "Planned", "date": "2026-11-15T00:00:00" },
-  { "id": 2, "name": "Radar Calibration", "location": "Tel Aviv", "type": "Radar", "status": "Completed", "date": "2026-10-01T00:00:00" },
-  { "id": 3, "name": "Drone Range", "location": "Haifa", "type": "Drone", "status": "InProgress", "date": "2026-11-13T00:00:00" },
-  { "id": 4, "name": "Antenna Check", "location": "Eilat", "type": "Radar", "status": "Planned", "date": "2026-12-01T00:00:00" },
-  { "id": 5, "name": "Compass Drift", "location": "Tel Aviv", "type": "Navigation", "status": "Completed", "date": "2026-09-15T00:00:00" },
-  { "id": 6, "name": "Sensor Alignment", "location": "Haifa", "type": "Radar", "status": "Planned", "date": "2026-11-05T00:00:00" }
+  {
+    "Id": 1,
+    "Name": "Night Field Test",
+    "Location": "Haifa",
+    "Type": "Navigation",
+    "Date": "2026-11-15T00:00:00",
+    "Status": "Planned"
+  },
+  {
+    "Id": 2,
+    "Name": "Radar Calibration",
+    "Location": "Tel Aviv",
+    "Type": "Radar",
+    "Date": "2026-10-01T00:00:00",
+    "Status": "Completed"
+  },
+  {
+    "Id": 3,
+    "Name": "Drone Range",
+    "Location": "Haifa",
+    "Type": "Drone",
+    "Date": "2026-11-13T00:00:00",
+    "Status": "InProgress"
+  },
+  {
+    "Id": 4,
+    "Name": "Antenna Check",
+    "Location": "Eilat",
+    "Type": "Radar",
+    "Date": "2026-12-01T00:00:00",
+    "Status": "Planned"
+  },
+  {
+    "Id": 5,
+    "Name": "Compass Drift",
+    "Location": "Tel Aviv",
+    "Type": "Navigation",
+    "Date": "2026-09-15T00:00:00",
+    "Status": "Completed"
+  },
+  {
+    "Id": 6,
+    "Name": "Sensor Alignment",
+    "Location": "Haifa",
+    "Type": "Radar",
+    "Date": "2026-11-05T00:00:00",
+    "Status": "Planned"
+  },
+  {
+    "Id": 7,
+    "Name": "specialProject",
+    "Location": "Nofit",
+    "Type": "1",
+    "Date": "2026-11-17T12:34:43.428Z",
+    "Status": "InProgress"
+  },
+  {
+    "Id": 8,
+    "Name": "Thermal Test",
+    "Location": "Eilat",
+    "Type": "Radar",
+    "Date": "2026-12-20T00:00:00",
+    "Status": "Planned"
+  }
 ]
