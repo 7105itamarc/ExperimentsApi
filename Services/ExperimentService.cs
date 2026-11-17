@@ -39,15 +39,13 @@ public class ExperimentService : IExperimentService
     }
     public async Task<ExperimentSummaryDto> CreateAsync(CreateExperimentDto dto)
     {
-        bool statusOk = Enum.TryParse(dto.Status, true, out ExperimentStatus status);
-
+        ExperimentStatus status = ParseStatus(dto.Status);
         if (dto.Date is null) { throw new ArgumentException("Date is Required"); }
-        if (!statusOk || !Enum.IsDefined(status)) { throw new ArgumentException("Invalid status"); }
 
         List<Experiment> experiments = await _repository.GetAllAsync();
         int newId = experiments.Count == 0 ? 1 : experiments.Max(ex => ex.Id) + 1;
 
-        
+
         Experiment newExperiment = new Experiment
         {
             Id = newId,
@@ -62,4 +60,39 @@ public class ExperimentService : IExperimentService
 
         return ToSummaryDto(newExperiment);
     }
+
+    private static ExperimentStatus ParseStatus(string textStatus)
+    {
+        bool statusOk = Enum.TryParse(textStatus, true, out ExperimentStatus status);
+
+        if (!statusOk || !Enum.IsDefined(status)) { throw new ArgumentException("Invalid status"); }
+
+        return status;
+    }
+
+    public async Task<ExperimentSummaryDto?> UpdateAsync(int id, UpdateExperimentDto dto)
+    {
+        ExperimentStatus status = ParseStatus(dto.Status);
+        List<Experiment> experiments = await _repository.GetAllAsync();
+        Experiment? toChange = experiments.FirstOrDefault(ex => ex.Id == id);
+        
+        if (toChange is null) {return null; }
+        toChange.Name = dto.Name;
+        toChange.Location = dto.Location;
+        toChange.Type = dto.Type;
+        toChange.Date = dto.Date.Value;
+        toChange.Status = status;
+
+        await _repository.SaveAllAsync(experiments);
+        return new ExperimentSummaryDto
+        {
+            Name = dto.Name,
+            Location = dto.Location,
+            Type = dto.Type,
+            Date = dto.Date.Value,
+            Status = dto.Status
+        };
+
+    }
+    
 }
