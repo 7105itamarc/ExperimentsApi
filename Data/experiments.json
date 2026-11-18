@@ -54,13 +54,5 @@
     "Type": "startingProject",
     "Date": "2026-11-17T12:34:43.428Z",
     "Status": "InProgress"
-  },
-  {
-    "Id": 8,
-    "Name": "Thermal Test",
-    "Location": "Eilat",
-    "Type": "Radar",
-    "Date": "2026-12-20T00:00:00",
-    "Status": "Planned"
   }
 ]

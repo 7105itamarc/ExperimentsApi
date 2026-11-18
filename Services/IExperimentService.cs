@@ -8,4 +8,5 @@ public interface IExperimentService
     public Task<ExperimentSummaryDto?> GetByIdAsync(int id);
     public Task<ExperimentSummaryDto> CreateAsync(CreateExperimentDto dto);
     public Task<ExperimentSummaryDto?> UpdateAsync(int id, UpdateExperimentDto dto);
+    public Task<bool> DeleteAsync(int id);
 }

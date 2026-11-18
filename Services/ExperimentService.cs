@@ -73,10 +73,12 @@ public class ExperimentService : IExperimentService
     public async Task<ExperimentSummaryDto?> UpdateAsync(int id, UpdateExperimentDto dto)
     {
         ExperimentStatus status = ParseStatus(dto.Status);
+        if (dto.Date is null) { throw new ArgumentException("Date is Required"); }
+
         List<Experiment> experiments = await _repository.GetAllAsync();
         Experiment? toChange = experiments.FirstOrDefault(ex => ex.Id == id);
-        
-        if (toChange is null) {return null; }
+
+        if (toChange is null) { return null; }
         toChange.Name = dto.Name;
         toChange.Location = dto.Location;
         toChange.Type = dto.Type;
@@ -84,15 +86,18 @@ public class ExperimentService : IExperimentService
         toChange.Status = status;
 
         await _repository.SaveAllAsync(experiments);
-        return new ExperimentSummaryDto
-        {
-            Name = dto.Name,
-            Location = dto.Location,
-            Type = dto.Type,
-            Date = dto.Date.Value,
-            Status = dto.Status
-        };
+        return ToSummaryDto(toChange);
 
     }
-    
+
+    public async Task<bool> DeleteAsync(int id)
+    {
+
+        List<Experiment> experiments = await _repository.GetAllAsync();
+        Experiment? toDelete = experiments.FirstOrDefault(ex => ex.Id == id);
+        if (toDelete is null) { return false; }
+        experiments.Remove(toDelete);
+        await _repository.SaveAllAsync(experiments);
+        return true;
+    }
 }

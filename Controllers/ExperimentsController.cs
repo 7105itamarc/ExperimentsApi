@@ -59,4 +59,12 @@ public class ExperimentsController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> Delete(int id)
+    {
+        bool deleted = await _experimentService.DeleteAsync(id);
+        if (!deleted) { return NotFound("id doesn't exist"); }
+        return NoContent();
+    }
 }
