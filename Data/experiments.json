@@ -51,7 +51,7 @@
     "Id": 7,
     "Name": "specialProject",
     "Location": "Nofit",
-    "Type": "1",
+    "Type": "startingProject",
     "Date": "2026-11-17T12:34:43.428Z",
     "Status": "InProgress"
   },
